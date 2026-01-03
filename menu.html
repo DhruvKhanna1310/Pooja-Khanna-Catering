@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pooja Khanna | Catering • Desserts • Sherbets • Tiffin</title>
+  <meta name="description" content="Premium home-style catering, desserts, sherbets, and tiffin service. Orders via Google Form." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #07070b;
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.68);
+      --muted2: rgba(255,255,255,0.52);
+      --border: rgba(255,255,255,0.12);
+      --panel: rgba(255,255,255,0.06);
+      --panel2: rgba(255,255,255,0.085);
+      --gold: #D7B26D;
+      --gold2:#f1d28a;
+      --shadow: 0 20px 60px rgba(0,0,0,0.55);
+      --r1: 18px;
+      --r2: 26px;
+      --max: 1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      color:var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 12% -10%, rgba(215,178,109,0.22), transparent 62%),
+        radial-gradient(1000px 600px at 92% 10%, rgba(125,98,255,0.14), transparent 58%),
+        linear-gradient(180deg, #05050a, var(--bg));
+      line-height:1.6;
+    }
+
+    /* Subtle "marble" texture */
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:0.16;
+      background:
+        radial-gradient(600px 240px at 25% 20%, rgba(255,255,255,0.08), transparent 70%),
+        radial-gradient(500px 220px at 70% 55%, rgba(255,255,255,0.06), transparent 72%),
+        radial-gradient(700px 260px at 40% 90%, rgba(255,255,255,0.05), transparent 74%);
+      mix-blend-mode: overlay;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .container{ width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter: blur(14px);
+      background: rgba(7,7,11,0.76);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap: 16px;
+    }
+    .brand{ display:flex; align-items:center; gap:12px; }
+    .mark{
+      width: 40px; height:40px; border-radius: 14px;
+      background: linear-gradient(135deg, rgba(215,178,109,0.95), rgba(125,98,255,0.45));
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 14px 40px rgba(215,178,109,0.16);
+    }
+    .brand h1{
+      margin:0; font-family:"Playfair Display", serif;
+      font-size: 18px; letter-spacing:0.2px;
+    }
+    .brand .sub{ margin-top:2px; font-size:12px; color:var(--muted); }
+
+    .links{ display:flex; align-items:center; gap:16px; }
+    .links a{
+      font-size: 13px; color: var(--muted);
+      padding: 8px 10px; border-radius: 12px;
+      transition: 0.2s ease;
+    }
+    .links a:hover{
+      color:var(--text);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .cta{ display:flex; align-items:center; gap:10px; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 14px; border-radius:999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color:var(--text);
+      font-weight: 600; font-size: 13px;
+      transition: 0.2s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.09); }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(215,178,109,0.98), rgba(215,178,109,0.72));
+      color:#16120a;
+      border-color: rgba(215,178,109,0.45);
+      box-shadow: 0 18px 40px rgba(215,178,109,0.22);
+    }
+    .btn.primary:hover{ filter:brightness(1.06); }
+    .btn.ghost{ background: transparent; box-shadow:none; }
+
+    .mobileToggle{
+      display:none;
+      padding:10px 12px;
+      border-radius:14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color:var(--text);
+      font-weight: 700;
+    }
+    .mobileMenu{
+      display:none;
+      padding:10px 0 18px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+    }
+    .mobileMenu a{
+      display:block; padding:10px 0; color:var(--muted); font-size:14px;
+    }
+    .mobileMenu a:hover{ color:var(--text); }
+
+    /* Layout blocks */
+    .card{
+      border-radius: var(--r2);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.085), rgba(255,255,255,0.04));
+      box-shadow: var(--shadow);
+    }
+    section{ padding: 28px 0; }
+    .sectionHead{
+      display:flex; justify-content:space-between; align-items:flex-end;
+      gap:18px; margin-bottom:14px;
+    }
+    .sectionHead h2{
+      margin:0;
+      font-family:"Playfair Display", serif;
+      font-size: 26px;
+      letter-spacing:0.2px;
+    }
+    .sectionHead p{ margin:0; color:var(--muted); font-size:13px; max-width:70ch; }
+
+    /* Hero */
+    .hero{ padding: 44px 0 16px; }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .heroMain{ padding: 26px; position:relative; overflow:hidden; }
+    .heroMain:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 280px at 25% 0%, rgba(215,178,109,0.22), transparent 65%),
+        radial-gradient(700px 280px at 85% 15%, rgba(125,98,255,0.16), transparent 70%);
+      pointer-events:none;
+    }
+    .heroMain > *{ position:relative; z-index:1; }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+    .dot{
+      width: 8px; height:8px; border-radius:999px;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(215,178,109,0.18);
+    }
+
+    .heroTitle{
+      margin:0 0 10px;
+      font-family:"Playfair Display", serif;
+      font-size: clamp(30px, 3.7vw, 46px);
+      line-height: 1.08;
+      letter-spacing: 0.2px;
+    }
+    .heroTitle .accent{ color: var(--gold2); }
+    .heroText{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:15px;
+      max-width: 72ch;
+    }
+    .actions{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 10px; }
+
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+      margin-top: 18px;
+    }
+    .stat{
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+    }
+    .stat b{
+      display:block;
+      font-family:"Playfair Display", serif;
+      font-size: 18px;
+      margin-bottom: 2px;
+    }
+    .stat span{ color: var(--muted2); font-size: 12px; }
+
+    .heroSide{ padding: 18px; display:flex; flex-direction:column; gap: 12px; }
+    .sideBlock{
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+    }
+    .sideBlock h3{ margin:0 0 6px; font-size:14px; letter-spacing:0.2px; }
+    .sideBlock p{ margin:0; font-size:13px; color:var(--muted); }
+
+    .chefNote{
+      background: linear-gradient(180deg, rgba(215,178,109,0.14), rgba(255,255,255,0.04));
+      border: 1px solid rgba(215,178,109,0.22);
+    }
+    .chefSig{
+      margin-top: 10px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color: rgba(255,255,255,0.86);
+      font-size: 13px;
+    }
+    .chefSig .sigMark{
+      width: 28px; height:28px; border-radius: 12px;
+      background: rgba(215,178,109,0.22);
+      border: 1px solid rgba(215,178,109,0.35);
+    }
+
+    /* Menu */
+    .menuGrid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .menuCard{
+      grid-column: span 6;
+      padding: 18px;
+      border-radius: var(--r1);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+    }
+    .menuCard.wide{ grid-column: span 12; }
+    .menuCard h3{
+      margin:0 0 10px;
+      font-size: 13px;
+      letter-spacing: 0.35px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.88);
+    }
+    .menuList{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+    .item{
+      display:flex; justify-content:space-between; align-items:flex-start;
+      gap: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed rgba(255,255,255,0.12);
+    }
+    .item:last-child{ border-bottom:none; padding-bottom:0; }
+    .name{ font-weight: 600; font-size: 14px; }
+    .desc{ margin-top:2px; font-size:12px; color: var(--muted2); }
+    .price{ color: var(--gold2); font-weight: 700; font-size: 13px; white-space:nowrap; margin-top:2px; }
+
+    .note{ margin-top: 12px; color: var(--muted); font-size: 12px; }
+
+    /* Order form embed */
+    .embedWrap{
+      border-radius: var(--r1);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+    }
+    iframe{ display:block; width:100%; border:0; }
+
+    /* Footer */
+    footer{
+      padding: 28px 0 44px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      margin-top: 10px;
+    }
+    .footerGrid{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+      align-items:start;
+    }
+    .fine{ color: var(--muted2); font-size: 12px; margin: 10px 0 0; }
+
+    @media (max-width: 980px){
+      .heroGrid{ grid-template-columns: 1fr; }
+      .menuCard{ grid-column: span 12; }
+      .links{ display:none; }
+      .mobileToggle{ display:inline-flex; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <div class="mark" aria-hidden="true"></div>
+          <div>
+            <h1>Pooja Khanna</h1>
+            <div class="sub">Catering • Desserts • Sherbets • Tiffin</div>
+          </div>
+        </div>
+
+        <nav class="links" aria-label="Primary">
+          <a href="#menu">Menu</a>
+          <a href="#order">Order</a>
+          <a href="#tiffin">Tiffin</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="cta">
+          <a class="btn ghost" href="tel:+919920225726">Call</a>
+          <a class="btn primary" href="https://forms.gle/K1zd7wtZqER1nGVC7" target="_blank" rel="noreferrer">Order Form</a>
+          <button class="mobileToggle" id="mobileToggle" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+        </div>
+      </div>
+
+      <div class="mobileMenu" id="mobileMenu">
+        <a href="#menu">Menu</a>
+        <a href="#order">Order</a>
+        <a href="#tiffin">Tiffin</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <div class="heroGrid">
+        <div class="card heroMain">
+          <div class="badge"><span class="dot"></span> Get-togethers • Kitty parties • Cravings — we’re your go-to</div>
+
+          <h2 class="heroTitle">
+            Crafted meals, <span class="accent">beautifully balanced</span> —
+            for celebrations and everyday comfort.
+          </h2>
+
+          <p class="heroText">
+            From classic North Indian mains and breads to festive desserts, sherbets, and tiffin combos —
+            every order is prepared with care and confirmed in advance for smooth delivery.
+          </p>
+
+          <div class="actions">
+            <a class="btn primary" href="#order">Place an Order</a>
+            <a class="btn" href="#menu">View Menu</a>
+            <a class="btn" href="#tiffin">Tiffin Options</a>
+          </div>
+
+          <div class="stats" aria-label="Highlights">
+            <div class="stat"><b>Advance orders</b><span>1 day (tiffin: 12 hours)</span></div>
+            <div class="stat"><b>Event-ready</b><span>Qty-friendly, party perfect</span></div>
+            <div class="stat"><b>Home-style</b><span>Clean, consistent, comforting</span></div>
+          </div>
+        </div>
+
+        <aside class="card heroSide">
+          <div class="sideBlock chefNote">
+            <h3>Note from the Chef</h3>
+            <p>
+              “I cook the way I’d serve my own family — with patience, balance, and respect for ingredients.
+              Every order is prepared fresh, packed carefully, and timed so it reaches you at its best.
+              If you’re ordering for guests, tell me your occasion — I’ll help you build the perfect spread.”
+            </p>
+            <div class="chefSig">
+              <span class="sigMark" aria-hidden="true"></span>
+              <span><b>Pooja</b> • Chef & Home Caterer</span>
+            </div>
+          </div>
+
+          <div class="sideBlock">
+            <h3>Fastest ordering</h3>
+            <p>Use the Order Form. You’ll automatically be tracked in our order sheet for confirmation.</p>
+            <div class="actions" style="margin-top:12px;">
+              <a class="btn primary" href="https://forms.gle/K1zd7wtZqER1nGVC7" target="_blank" rel="noreferrer">Open Order Form</a>
+              <a class="btn" href="tel:+919920225726">Call</a>
+            </div>
+          </div>
+
+          <div class="sideBlock">
+            <h3>Contact</h3>
+            <p><span style="color:var(--gold2); font-weight:700;">+91 99202 25726</span></p>
+            <p style="margin-top:6px;">For faster confirmation, mention date/time + item list + quantities.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu -->
+  <section id="menu">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Menu</h2>
+          <p>Prices as per shared menu. Orders are confirmed based on availability.</p>
+        </div>
+      </div>
+
+      <div class="menuGrid">
+        <div class="menuCard">
+          <h3>Mains</h3>
+          <ul class="menuList">
+            <li class="item"><div><div class="name">Chole</div></div><div class="price">₹600/kg</div></li>
+            <li class="item"><div><div class="name">Rajma</div></div><div class="price">₹600/kg</div></li>
+            <li class="item"><div><div class="name">Dal Makhani</div></div><div class="price">₹700/kg</div></li>
+            <li class="item"><div><div class="name">Punjabi Curry</div></div><div class="price">₹600/kg</div></li>
+            <li class="item"><div><div class="name">Chicken (Different Gravies)</div></div><div class="price">₹850/kg</div></li>
+            <li class="item"><div><div class="name">Paneer (Different Gravies)</div></div><div class="price">₹850/kg</div></li>
+            <li class="item">
+              <div>
+                <div class="name">Dal Pakwan</div>
+                <div class="desc">₹250 / 4 pc + 200 ml dal</div>
+              </div>
+              <div class="price">₹250</div>
+            </li>
+            <li class="item"><div><div class="name">Alfredo Pasta (V/NV)</div><div class="desc">₹850–900/kg</div></div><div class="price">₹850–900</div></li>
+            <li class="item"><div><div class="name">Arrabiata Pasta (V/NV)</div><div class="desc">₹850–900/kg</div></div><div class="price">₹850–900</div></li>
+            <li class="item"><div><div class="name">Baked Pasta & Vegetables (V/NV)</div></div><div class="price">₹1750/kg</div></li>
+          </ul>
+        </div>
+
+        <div class="menuCard">
+          <h3>Indian Breads</h3>
+          <ul class="menuList">
+            <li class="item"><div><div class="name">Kulche (2 pc)</div></div><div class="price">₹100</div></li>
+            <li class="item"><div><div class="name">Bhature (2 pc)</div></div><div class="price">₹100</div></li>
+            <li class="item"><div><div class="name">Paranthe (Choice) (2 pc)</div></div><div class="price">₹100</div></li>
+            <li class="item"><div><div class="name">Stuffed Parantha</div></div><div class="price">₹75</div></li>
+          </ul>
+        </div>
+
+        <div class="menuCard">
+          <h3>Rice</h3>
+          <ul class="menuList">
+            <li class="item"><div><div class="name">Biryani (V/NV)</div><div class="desc">₹1600–2000/kg</div></div><div class="price">₹1600–2000</div></li>
+            <li class="item"><div><div class="name">Navratan Pulav</div></div><div class="price">₹1500/kg</div></li>
+            <li class="item"><div><div class="name">Veg Pulav</div></div><div class="price">₹700/kg</div></li>
+            <li class="item"><div><div class="name">Chicken Yakhni Pulav</div></div><div class="price">₹1600/kg</div></li>
+          </ul>
+        </div>
+
+        <div class="menuCard">
+          <h3>Desserts</h3>
+          <ul class="menuList">
+            <li class="item"><div><div class="name">Gur ka Halwa</div></div><div class="price">₹900/kg</div></li>
+            <li class="item"><div><div class="name">Moong Dal Halwa</div></div><div class="price">₹900/kg</div></li>
+            <li class="item"><div><div class="name">Sooji ka Halwa</div></div><div class="price">₹800/kg</div></li>
+            <li class="item"><div><div class="name">Fruit Custard</div></div><div class="price">₹800/kg</div></li>
+            <li class="item"><div><div class="name">Fruit Cream</div></div><div class="price">₹900/kg</div></li>
+            <li class="item"><div><div class="name">Besan Laddoo</div></div><div class="price">₹950/kg</div></li>
+            <li class="item"><div><div class="name">Kheer</div></div><div class="price">₹700/kg</div></li>
+            <li class="item"><div><div class="name">Phirni</div></div><div class="price">₹700/kg</div></li>
+          </ul>
+        </div>
+
+        <div class="menuCard">
+          <h3>Sherbets</h3>
+          <ul class="menuList">
+            <li class="item"><div><div class="name">Rose Sherbet</div></div><div class="price">₹200/L</div></li>
+            <li class="item"><div><div class="name">Sandal Sherbet</div></div><div class="price">₹200/L</div></li>
+            <li class="item"><div><div class="name">Khus Sherbet</div></div><div class="price">₹200/L</div></li>
+            <li class="item"><div><div class="name">Saunf (Variyali) Sherbet</div></div><div class="price">₹200/L</div></li>
+            <li class="item"><div><div class="name">Sherbet Powder</div><div class="desc">250 g</div></div><div class="price">₹250</div></li>
+          </ul>
+        </div>
+
+        <div class="menuCard">
+          <h3>Powders, Dips & Snacks</h3>
+          <ul class="menuList">
+            <li class="item"><div><div class="name">Protein Powder</div></div><div class="price">₹2500/kg</div></li>
+            <li class="item"><div><div class="name">Milk Masala Powder</div></div><div class="price">₹2000/kg</div></li>
+            <li class="item"><div><div class="name">Chai Masala</div></div><div class="price">₹600/kg</div></li>
+            <li class="item"><div><div class="name">Hummus (Chickpea / Beetroot / Chicken – mix of 3)</div><div class="desc">200 g</div></div><div class="price">₹350</div></li>
+            <li class="item"><div><div class="name">Garlic Yogurt Dip</div><div class="desc">200 g</div></div><div class="price">₹250</div></li>
+            <li class="item"><div><div class="name">Chiwda (Poha, Makhana)</div></div><div class="price">₹1000/kg</div></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="note">* Place orders one day in advance.</p>
+    </div>
+  </section>
+
+  <!-- Order Form -->
+  <section id="order">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Place an Order</h2>
+          <p>
+            Submit the form below to log your order. We’ll confirm availability and final details.
+            If the embedded form doesn’t load, use the “Open Order Form” button.
+          </p>
+        </div>
+      </div>
+
+      <div class="menuGrid">
+        <div class="menuCard wide">
+          <div class="actions" style="margin-bottom:12px;">
+            <a class="btn primary" href="https://forms.gle/K1zd7wtZqER1nGVC7" target="_blank" rel="noreferrer">Open Order Form</a>
+            <a class="btn" href="tel:+919920225726">Call</a>
+          </div>
+
+          <div class="embedWrap">
+            <!-- IMPORTANT:
+              Your current short link may not embed due to Google redirect.
+              Best practice:
+              1) Open your Google Form
+              2) Click Send -> <> Embed
+              3) Copy the iframe src that ends with: viewform?embedded=true
+              4) Replace the src below with that embed src
+            -->
+            <iframe
+              src="https://forms.gle/K1zd7wtZqER1nGVC7"
+              height="900"
+              loading="lazy"
+              title="Order Form"
+            >Loading…</iframe>
+          </div>
+
+          <p class="note">
+            Tip: For faster confirmation, include date/time + items + quantity (kg/pcs) + delivery location.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tiffin -->
+  <section id="tiffin">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Tiffin Service</h2>
+          <p>Reliable meals with consistent portions. Please order 12 hours in advance.</p>
+        </div>
+      </div>
+
+      <div class="menuGrid">
+        <div class="menuCard">
+          <h3>Veg Tiffin</h3>
+          <ul class="menuList">
+            <li class="item"><div><div class="name">Includes</div><div class="desc">1 Sabzi • 1 Dal/Gravy • 3 Rotis • Rice</div></div><div class="price">₹250</div></li>
+          </ul>
+          <p class="note">* Order at least 12 hours in advance.</p>
+        </div>
+
+        <div class="menuCard">
+          <h3>Non-Veg Tiffin</h3>
+          <ul class="menuList">
+            <li class="item"><div><div class="name">Includes</div><div class="desc">1 Sabzi/Dal • 1 Chicken Gravy/Dry • 3 Rotis • Rice</div></div><div class="price">₹300</div></li>
+          </ul>
+          <p class="note">* Order at least 12 hours in advance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footerGrid">
+        <div>
+          <h2 style="margin:0 0 8px; font-family:'Playfair Display', serif;">Contact</h2>
+          <div style="color:var(--muted);">Pooja Khanna</div>
+          <div class="fine">Catering • Desserts • Sherbets • Tiffin</div>
+          <div class="fine">Advance order: 1 day • Tiffin: 12 hours</div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:10px; align-items:flex-start;">
+          <a class="btn primary" href="https://forms.gle/K1zd7wtZqER1nGVC7" target="_blank" rel="noreferrer">Order Form</a>
+          <a class="btn" href="tel:+919920225726">Call: +91 99202 25726</a>
+          <a class="btn ghost" href="#menu">Back to Menu ↑</a>
+        </div>
+      </div>
+
+      <div class="fine" style="margin-top:16px;">
+        © <span id="year"></span> Pooja Khanna. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById('mobileToggle');
+    const menu = document.getElementById('mobileMenu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const open = menu.style.display === 'block';
+        menu.style.display = open ? 'none' : 'block';
+        toggle.setAttribute('aria-expanded', String(!open));
+      });
+    }
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
