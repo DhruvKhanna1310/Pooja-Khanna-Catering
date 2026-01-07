@@ -254,6 +254,58 @@
       border: 1px solid rgba(215,178,109,0.35);
     }
 
+    /* About */
+    .aboutCard{ padding: 22px; }
+    .aboutGrid{
+      display:grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 16px;
+      align-items: center;
+    }
+    .aboutPhoto{
+      border-radius: 22px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      box-shadow: 0 18px 55px rgba(0,0,0,0.45);
+      position: relative;
+    }
+    .aboutPhoto img{
+      width:100%;
+      height: 420px;
+      object-fit: cover;
+      display:block;
+      transform: scale(1.02);
+    }
+    .aboutPhoto:after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(600px 300px at 30% 10%, rgba(215,178,109,0.18), transparent 60%);
+      pointer-events:none;
+    }
+    .aboutText h3{
+      margin: 0 0 10px;
+      font-family:"Playfair Display", serif;
+      font-size: 26px;
+      letter-spacing: 0.2px;
+    }
+    .aboutText p{ margin:0; color: var(--muted); font-size: 14px; }
+    .aboutChips{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .chip{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.78);
+      font-weight: 700;
+      font-size: 12px;
+    }
+
     /* Menu */
     .menuGrid{
       display:grid;
@@ -290,30 +342,6 @@
 
     .note{ margin-top: 12px; color: var(--muted); font-size: 12px; }
 
-    /* Order form embed */
-    .embedWrap{
-      border-radius: var(--r1);
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.03);
-    }
-    iframe{ display:block; width:100%; border:0; }
-
-    /* Footer */
-    footer{
-      padding: 28px 0 44px;
-      border-top: 1px solid rgba(255,255,255,0.10);
-      margin-top: 10px;
-    }
-    .footerGrid{
-      display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 16px;
-      align-items:start;
-    }
-    .fine{ color: var(--muted2); font-size: 12px; margin: 10px 0 0; }
-
-    
     /* Menu controls */
     .controls{
       display:flex;
@@ -370,6 +398,29 @@
       border-color: rgba(215,178,109,0.45);
     }
 
+    /* Order form embed */
+    .embedWrap{
+      border-radius: var(--r1);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+    }
+    iframe{ display:block; width:100%; border:0; }
+
+    /* Footer */
+    footer{
+      padding: 28px 0 44px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      margin-top: 10px;
+    }
+    .footerGrid{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+      align-items:start;
+    }
+    .fine{ color: var(--muted2); font-size: 12px; margin: 10px 0 0; }
+
     /* Floating WhatsApp button */
     .waFloat{
       position: fixed;
@@ -399,12 +450,14 @@
     .waText b{ display:block; font-size:13px; }
     .waText span{ font-size:12px; color: var(--muted); }
 
-
     @media (max-width: 980px){
       .heroGrid{ grid-template-columns: 1fr; }
       .menuCard{ grid-column: span 12; }
       .links{ display:none; }
       .mobileToggle{ display:inline-flex; }
+
+      .aboutGrid{ grid-template-columns: 1fr; }
+      .aboutPhoto img{ height: 360px; }
     }
   </style>
 </head>
@@ -423,6 +476,7 @@
         </div>
 
         <nav class="links" aria-label="Primary">
+          <a href="#about">About</a>
           <a href="#menu">Menu</a>
           <a href="#order">Order</a>
           <a href="#tiffin">Tiffin</a>
@@ -437,6 +491,7 @@
       </div>
 
       <div class="mobileMenu" id="mobileMenu">
+        <a href="#about">About</a>
         <a href="#menu">Menu</a>
         <a href="#order">Order</a>
         <a href="#tiffin">Tiffin</a>
@@ -508,7 +563,58 @@
     </div>
   </header>
 
-<!-- Menu -->
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>About</h2>
+          <p>A little about the kitchen, the cooking style, and what you can expect with every order.</p>
+        </div>
+      </div>
+
+      <div class="card aboutCard">
+        <div class="aboutGrid">
+          <div class="aboutPhoto" aria-label="Photo of Pooja Khanna">
+            <!-- Put your image in your repo at: /assets/pooja.png -->
+            <img src="assets/pooja.png" alt="Pooja Khanna" loading="lazy">
+          </div>
+
+          <div class="aboutText">
+            <h3>Hi, I’m Pooja.</h3>
+            <p>
+              I’m a home chef who loves cooking food that feels festive yet familiar — the kind you serve with pride
+              at family get-togethers. My focus is on balanced flavors, consistent portions, and fresh preparation
+              so your meals arrive tasting just right.
+            </p>
+
+            <p style="margin-top:12px;">
+              Whether you’re planning a kitty party, a small celebration, or simply want reliable tiffins —
+              I’ll help you choose the right menu and quantities for your occasion.
+            </p>
+
+            <div class="aboutChips" aria-label="Highlights">
+              <span class="chip">Home-style • Clean prep</span>
+              <span class="chip">Event-friendly quantities</span>
+              <span class="chip">Freshly made, on schedule</span>
+              <span class="chip">North Indian + Comfort classics</span>
+            </div>
+
+            <div class="actions" style="margin-top:16px;">
+              <a class="btn primary" href="https://forms.gle/K1zd7wtZqER1nGVC7" target="_blank" rel="noreferrer">Order Form</a>
+              <a class="btn" href="https://wa.me/919920225726?text=Hi%20Pooja%2C%20I%20want%20to%20place%20an%20order.%20Date%2Ftime%3A%20%20Items%3A%20%20Quantity%3A%20%20Delivery%20location%3A" target="_blank" rel="noreferrer">WhatsApp</a>
+            </div>
+
+            <p class="note" style="margin-top:12px;">
+              Tip: Share your date/time + headcount and I’ll suggest the best combo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu -->
   <section id="menu">
     <div class="container">
       <div class="sectionHead">
@@ -518,11 +624,26 @@
         </div>
       </div>
 
+      <!-- Controls (search + category filters) -->
+      <div class="controls" aria-label="Menu controls">
+        <div class="search">
+          <input id="menuSearch" type="search" placeholder="Search menu… (e.g., chole, paneer, halwa)" />
+        </div>
+        <div class="pillRow" aria-label="Category filters">
+          <span class="pill active" data-filter="all">All</span>
+          <span class="pill" data-filter="mains">Mains</span>
+          <span class="pill" data-filter="breads">Breads</span>
+          <span class="pill" data-filter="rice">Rice</span>
+          <span class="pill" data-filter="desserts">Desserts</span>
+          <span class="pill" data-filter="sherbets">Sherbets</span>
+          <span class="pill" data-filter="snacks">Snacks</span>
+        </div>
+      </div>
+
       <div class="menuGrid">
         <div class="menuCard">
           <h3>Mains</h3>
           <ul class="menuList">
-
             <li class="item" data-cat="mains"><div><div class="name">Chole</div></div><div class="price">₹650/kg</div></li>
             <li class="item" data-cat="mains"><div><div class="name">Rajma</div></div><div class="price">₹650/kg</div></li>
             <li class="item" data-cat="mains"><div><div class="name">Dal Makhani</div></div><div class="price">₹800/kg</div></li>
@@ -538,43 +659,55 @@
               </div>
               <div class="price">₹250</div>
             </li>
-            <li class="item" data-cat="mains"><div><div class="name">Alfredo Pasta (V/NV)</div><div class="desc">₹850–900/kg</div></div><div class="price">₹850–900</div></li>
-            <li class="item" data-cat="mains"><div><div class="name">Arrabiata Pasta (V/NV)</div><div class="desc">₹850–900/kg</div></div><div class="price">₹850–900</div></li>
+            <li class="item" data-cat="mains">
+              <div>
+                <div class="name">Alfredo Pasta (V/NV)</div>
+                <div class="desc">₹850–900/kg</div>
+              </div>
+              <div class="price">₹850–900</div>
+            </li>
+            <li class="item" data-cat="mains">
+              <div>
+                <div class="name">Arrabiata Pasta (V/NV)</div>
+                <div class="desc">₹850–900/kg</div>
+              </div>
+              <div class="price">₹850–900</div>
+            </li>
             <li class="item" data-cat="mains"><div><div class="name">Baked Pasta & Vegetables (V/NV)</div></div><div class="price">₹1750/kg</div></li>
-
-</ul>
+          </ul>
         </div>
 
         <div class="menuCard">
           <h3>Indian Breads</h3>
           <ul class="menuList">
-
             <li class="item" data-cat="breads"><div><div class="name">Stuffed Kulche (2 pc)</div></div><div class="price">₹100</div></li>
             <li class="item" data-cat="breads"><div><div class="name">Bhature (2 pc)</div></div><div class="price">₹100</div></li>
             <li class="item" data-cat="breads"><div><div class="name">Paranthe (Choice) (2 pc)</div></div><div class="price">₹100</div></li>
             <li class="item" data-cat="breads"><div><div class="name">Stuffed Parantha</div></div><div class="price">₹75</div></li>
             <li class="item" data-cat="breads"><div><div class="name">Chapati (per piece)</div></div><div class="price">₹15</div></li>
             <li class="item" data-cat="breads"><div><div class="name">Puri (per piece)</div></div><div class="price">₹5</div></li>
-
-</ul>
+          </ul>
         </div>
 
         <div class="menuCard">
           <h3>Rice</h3>
           <ul class="menuList">
-
-            <li class="item" data-cat="rice"><div><div class="name">Biryani (V/NV)</div><div class="desc">₹1600–2000/kg</div></div><div class="price">₹1600–2000</div></li>
+            <li class="item" data-cat="rice">
+              <div>
+                <div class="name">Biryani (V/NV)</div>
+                <div class="desc">₹1600–2000/kg</div>
+              </div>
+              <div class="price">₹1600–2000</div>
+            </li>
             <li class="item" data-cat="rice"><div><div class="name">Navratan Pulav</div></div><div class="price">₹1500/kg</div></li>
             <li class="item" data-cat="rice"><div><div class="name">Veg Pulav</div></div><div class="price">₹700/kg</div></li>
             <li class="item" data-cat="rice"><div><div class="name">Chicken Yakhni Pulav</div></div><div class="price">₹1600/kg</div></li>
-
-</ul>
+          </ul>
         </div>
 
         <div class="menuCard">
           <h3>Desserts</h3>
           <ul class="menuList">
-
             <li class="item" data-cat="desserts"><div><div class="name">Gur ka Halwa</div></div><div class="price">₹900/kg</div></li>
             <li class="item" data-cat="desserts"><div><div class="name">Moong Dal Halwa</div></div><div class="price">₹900/kg</div></li>
             <li class="item" data-cat="desserts"><div><div class="name">Sooji ka Halwa</div></div><div class="price">₹800/kg</div></li>
@@ -583,35 +716,30 @@
             <li class="item" data-cat="desserts"><div><div class="name">Besan Laddoo</div></div><div class="price">₹950/kg</div></li>
             <li class="item" data-cat="desserts"><div><div class="name">Kheer</div></div><div class="price">₹700/kg</div></li>
             <li class="item" data-cat="desserts"><div><div class="name">Phirni</div></div><div class="price">₹700/kg</div></li>
-
-</ul>
+          </ul>
         </div>
 
         <div class="menuCard">
           <h3>Sherbets</h3>
           <ul class="menuList">
-
             <li class="item" data-cat="sherbets"><div><div class="name">Rose Sherbet</div></div><div class="price">₹200/L</div></li>
             <li class="item" data-cat="sherbets"><div><div class="name">Sandal Sherbet</div></div><div class="price">₹200/L</div></li>
             <li class="item" data-cat="sherbets"><div><div class="name">Khus Sherbet</div></div><div class="price">₹200/L</div></li>
             <li class="item" data-cat="sherbets"><div><div class="name">Saunf (Variyali) Sherbet</div></div><div class="price">₹200/L</div></li>
             <li class="item" data-cat="sherbets"><div><div class="name">Sherbet Powder</div><div class="desc">250 g</div></div><div class="price">₹250</div></li>
-
-</ul>
+          </ul>
         </div>
 
         <div class="menuCard">
           <h3>Powders, Dips & Snacks</h3>
           <ul class="menuList">
-
             <li class="item" data-cat="snacks"><div><div class="name">Protein Powder</div></div><div class="price">₹2500/kg</div></li>
             <li class="item" data-cat="snacks"><div><div class="name">Milk Masala Powder</div></div><div class="price">₹2000/kg</div></li>
             <li class="item" data-cat="snacks"><div><div class="name">Chai Masala</div></div><div class="price">₹600/kg</div></li>
             <li class="item" data-cat="snacks"><div><div class="name">Hummus (Chickpea / Beetroot / Chicken — mix of 3)</div><div class="desc">200 g</div></div><div class="price">₹350</div></li>
             <li class="item" data-cat="snacks"><div><div class="name">Garlic Yogurt Dip</div><div class="desc">200 g</div></div><div class="price">₹250</div></li>
             <li class="item" data-cat="snacks"><div><div class="name">Chiwda (Poha, Makhana)</div></div><div class="price">₹1000/kg</div></li>
-
-</ul>
+          </ul>
         </div>
       </div>
 
@@ -639,8 +767,6 @@
             <a class="btn" href="tel:+919920225726">Call</a>
           </div>
 
-          
-          
           <div class="embedWrap">
             <iframe
               id="orderFrame"
@@ -650,24 +776,12 @@
               title="Order Form"
             >Loading…</iframe>
           </div>
-<p class="note" style="margin:10px 0 0;">
-                  How to get it: Google Form → <b>Send</b> → <b>&lt;&gt; Embed</b> → copy the URL from the iframe.
-                </p>
-              </div>
-            </div>
 
-            <iframe
-              id="orderFrame"
-              src="about:blank"
-              height="900"
-              loading="lazy"
-              title="Order Form"
-            >Loading…</iframe>
-          </div>
-
-
-          <p class="note">
+          <p class="note" style="margin:10px 0 0;">
             Tip: For faster confirmation, include date/time + items + quantity (kg/pcs) + delivery location.
+          </p>
+          <p class="note" style="margin:6px 0 0;">
+            How to update embed later: Google Form → <b>Send</b> → <b>&lt;&gt; Embed</b> → copy iframe URL.
           </p>
         </div>
       </div>
@@ -740,7 +854,6 @@
       });
     }
 
-    
     // Menu search + filters
     const searchInput = document.getElementById('menuSearch');
     const pills = Array.from(document.querySelectorAll('.pill[data-filter]'));
@@ -770,15 +883,14 @@
       });
     });
 
-
-
-
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
   <!-- Floating WhatsApp -->
-  <a class="waFloat" href="https://wa.me/919920225726?text=Hi%20Pooja%2C%20I%20want%20to%20place%20an%20order.%20Date%2Ftime%3A%20%20Items%3A%20%20Quantity%3A%20%20Delivery%20location%3A" target="_blank" rel="noreferrer" aria-label="WhatsApp Pooja Khanna">
+  <a class="waFloat"
+     href="https://wa.me/919920225726?text=Hi%20Pooja%2C%20I%20want%20to%20place%20an%20order.%20Date%2Ftime%3A%20%20Items%3A%20%20Quantity%3A%20%20Delivery%20location%3A"
+     target="_blank" rel="noreferrer" aria-label="WhatsApp Pooja Khanna">
     <span class="waIcon" aria-hidden="true">
       <svg width="18" height="18" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M16.04 3C9.5 3 4.2 8.05 4.2 14.29c0 2.26.7 4.35 1.9 6.1L5 29l8.94-2.7c1.9.97 4.07 1.52 6.4 1.52 6.54 0 11.84-5.05 11.84-11.29C32.18 8.05 22.58 3 16.04 3Z" fill="rgba(37,211,102,0.35)"/>
@@ -790,7 +902,6 @@
       <span>Fastest response</span>
     </span>
   </a>
-
 
 </body>
 </html>
