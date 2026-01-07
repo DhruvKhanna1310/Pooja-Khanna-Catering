@@ -105,6 +105,7 @@
       transition: 0.2s ease;
       box-shadow: 0 10px 30px rgba(0,0,0,0.25);
       white-space:nowrap;
+      cursor:pointer;
     }
     .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.09); }
     .btn.primary{
@@ -339,7 +340,6 @@
     .name{ font-weight: 600; font-size: 14px; }
     .desc{ margin-top:2px; font-size:12px; color: var(--muted2); }
     .price{ color: var(--gold2); font-weight: 700; font-size: 13px; white-space:nowrap; margin-top:2px; }
-
     .note{ margin-top: 12px; color: var(--muted); font-size: 12px; }
 
     /* Menu controls */
@@ -576,8 +576,8 @@
       <div class="card aboutCard">
         <div class="aboutGrid">
           <div class="aboutPhoto" aria-label="Photo of Pooja Khanna">
-            <!-- Put your image in your repo at: /assets/pooja.png -->
-            <img src="assets/pooja.png" alt="Pooja Khanna" loading="lazy">
+            <!-- IMPORTANT: your file is in the SAME folder as index.html (root), so this must be "pooja.png" -->
+            <img src="pooja.png" alt="Pooja Khanna" loading="lazy">
           </div>
 
           <div class="aboutText">
@@ -602,7 +602,9 @@
 
             <div class="actions" style="margin-top:16px;">
               <a class="btn primary" href="https://forms.gle/K1zd7wtZqER1nGVC7" target="_blank" rel="noreferrer">Order Form</a>
-              <a class="btn" href="https://wa.me/919920225726?text=Hi%20Pooja%2C%20I%20want%20to%20place%20an%20order.%20Date%2Ftime%3A%20%20Items%3A%20%20Quantity%3A%20%20Delivery%20location%3A" target="_blank" rel="noreferrer">WhatsApp</a>
+              <a class="btn"
+                 href="https://wa.me/919920225726?text=Hi%20Pooja%2C%20I%20want%20to%20place%20an%20order.%20Date%2Ftime%3A%20%20Items%3A%20%20Quantity%3A%20%20Delivery%20location%3A"
+                 target="_blank" rel="noreferrer">WhatsApp</a>
             </div>
 
             <p class="note" style="margin-top:12px;">
@@ -652,6 +654,7 @@
             <li class="item" data-cat="mains"><div><div class="name">Butter Chicken</div></div><div class="price">₹1000/kg</div></li>
             <li class="item" data-cat="mains"><div><div class="name">Chicken Ghee Roast</div></div><div class="price">₹1200/kg</div></li>
             <li class="item" data-cat="mains"><div><div class="name">Paneer (Different Gravies)</div></div><div class="price">₹900/kg</div></li>
+
             <li class="item" data-cat="mains">
               <div>
                 <div class="name">Dal Pakwan</div>
@@ -659,6 +662,7 @@
               </div>
               <div class="price">₹250</div>
             </li>
+
             <li class="item" data-cat="mains">
               <div>
                 <div class="name">Alfredo Pasta (V/NV)</div>
@@ -666,6 +670,7 @@
               </div>
               <div class="price">₹850–900</div>
             </li>
+
             <li class="item" data-cat="mains">
               <div>
                 <div class="name">Arrabiata Pasta (V/NV)</div>
@@ -673,6 +678,7 @@
               </div>
               <div class="price">₹850–900</div>
             </li>
+
             <li class="item" data-cat="mains"><div><div class="name">Baked Pasta & Vegetables (V/NV)</div></div><div class="price">₹1750/kg</div></li>
           </ul>
         </div>
@@ -780,9 +786,6 @@
           <p class="note" style="margin:10px 0 0;">
             Tip: For faster confirmation, include date/time + items + quantity (kg/pcs) + delivery location.
           </p>
-          <p class="note" style="margin:6px 0 0;">
-            How to update embed later: Google Form → <b>Send</b> → <b>&lt;&gt; Embed</b> → copy iframe URL.
-          </p>
         </div>
       </div>
     </div>
@@ -802,7 +805,13 @@
         <div class="menuCard">
           <h3>Veg Tiffin</h3>
           <ul class="menuList">
-            <li class="item"><div><div class="name">Includes</div><div class="desc">1 Sabzi • 1 Dal/Gravy • 3 Rotis • Rice</div></div><div class="price">₹250</div></li>
+            <li class="item">
+              <div>
+                <div class="name">Includes</div>
+                <div class="desc">1 Sabzi • 1 Dal/Gravy • 3 Rotis • Rice</div>
+              </div>
+              <div class="price">₹250</div>
+            </li>
           </ul>
           <p class="note">* Order at least 12 hours in advance.</p>
         </div>
@@ -810,7 +819,13 @@
         <div class="menuCard">
           <h3>Non-Veg Tiffin</h3>
           <ul class="menuList">
-            <li class="item"><div><div class="name">Includes</div><div class="desc">1 Sabzi/Dal • 1 Chicken Gravy/Dry • 3 Rotis • Rice</div></div><div class="price">₹300</div></li>
+            <li class="item">
+              <div>
+                <div class="name">Includes</div>
+                <div class="desc">1 Sabzi/Dal • 1 Chicken Gravy/Dry • 3 Rotis • Rice</div>
+              </div>
+              <div class="price">₹300</div>
+            </li>
           </ul>
           <p class="note">* Order at least 12 hours in advance.</p>
         </div>
@@ -905,4 +920,3 @@
 
 </body>
 </html>
-
